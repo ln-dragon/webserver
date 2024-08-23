@@ -89,6 +89,6 @@ public:
     }
 private:
     pthread_cond_t m_cond;
-    // pthread_mutex_t m_mutex;
+    pthread_mutex_t m_mutex;
 };
 #endif 

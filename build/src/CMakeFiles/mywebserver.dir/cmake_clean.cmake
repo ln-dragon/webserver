@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "/home/dragon/mywebserver/bin/mywebserver"
-  "/home/dragon/mywebserver/bin/mywebserver.pdb"
-  "CMakeFiles/mywebserver.dir/http_conn.cpp.o"
-  "CMakeFiles/mywebserver.dir/http_conn.cpp.o.d"
   "CMakeFiles/mywebserver.dir/main.cpp.o"
-  "CMakeFiles/mywebserver.dir/main.cpp.o.d"
+  "CMakeFiles/mywebserver.dir/http_conn.cpp.o"
+  "CMakeFiles/mywebserver.dir/memory_pool.cpp.o"
+  "CMakeFiles/mywebserver.dir/LFUCache.cpp.o"
+  "../../bin/mywebserver.pdb"
+  "../../bin/mywebserver"
 )
 
 # Per-language clean rules from dependency scanning.

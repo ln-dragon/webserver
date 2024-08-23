@@ -15,6 +15,7 @@
 #include <sys/mman.h>
 #include <stdarg.h>
 #include <sys/uio.h>
+#include "LFUCache.h"
 
 class http_conn{
 public:
@@ -105,5 +106,8 @@ private:
     struct iovec m_iv[2];//采用writev来执行写操作，定义下面两个成员，其中m_iv_count表示被写内存块的数量
     int bytes_have_send;// 已经发送的字节
     int bytes_to_send;// 将要发送的字节
+
+    std::string m_url_str;//m_url转换后的字符串类型
+    
 };
 #endif

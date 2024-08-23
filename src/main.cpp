@@ -35,6 +35,13 @@ int main(int argc, char *argv[]){
         printf("按照如下格式运行;%s ip_address port_number\n", basename(argv[0]));
         return -1;
     }
+    // printf("初始化内存池\n");
+
+    // // 初始化内存池
+    // init_MemoryPool();
+    // // 初始化缓存
+    // LFUCache::GetInstance().Initialize(10);
+
     //获取端口号
     char* ip = argv[1];
     int port = atoi(argv[2]);

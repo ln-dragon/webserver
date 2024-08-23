@@ -469,6 +469,8 @@ bool http_conn::process_write(HTTP_CODE ret){
         case FILE_REQUEST:{
             add_status_line(200, ok_200_title);
             add_headers(m_file_stat.st_size);
+            // printf("开始分散写入缓冲区!\n");
+            //无缓存机制的代码
             m_iv[0].iov_base = m_write_buf;
             m_iv[0].iov_len = m_write_idx;
             m_iv[1].iov_base = m_file_address;
@@ -476,6 +478,34 @@ bool http_conn::process_write(HTTP_CODE ret){
             m_iv_count = 2;
 
             bytes_to_send = m_write_idx + m_file_stat.st_size;
+
+            //有缓存机制的代码
+            // // 定义一个 std::string 变量来接收缓存内容
+            // std::string cached_value;
+
+            // if (LFUCache::GetInstance().get(m_url_str, cached_value)) {
+            //     // 缓存命中，将 cached_value 内容复制到 iovec 结构体
+            //     // printf("缓存命中!\n");
+            //     m_iv[1].iov_base = (void*)cached_value.data();
+            //     m_iv[1].iov_len = cached_value.size();
+            //     m_iv_count = 2;
+
+            //     bytes_to_send = m_write_idx + cached_value.size();
+            // } else {
+            //     // printf("缓存未命中!\n");
+            //     // 缓存未命中，继续从文件系统读取
+            //     m_iv[1].iov_base = m_file_address;
+            //     m_iv[1].iov_len = m_file_stat.st_size;
+            //     m_iv_count = 2;
+
+            //     bytes_to_send = m_write_idx + m_file_stat.st_size;
+
+            //     // 将文件内容加入缓存,m_file_address 位置开始读取 m_file_stat.st_size 字节的内容
+            //     std::string context(m_file_address, m_file_stat.st_size);
+            //     std::string m_url_str(m_url);  // 将 m_url 转化为 std::string 类型
+            //     LFUCache::GetInstance().set(m_url_str, context);
+            //     // printf("缓存加入成功!\n");
+            // }
             return true;
         }
         default:
@@ -489,17 +519,21 @@ bool http_conn::process_write(HTTP_CODE ret){
 }
 //添加状态行
 bool http_conn::add_status_line(int status, const char* title){
+    printf("添加状态行!\n");
     return add_response("%s %d %s\r\n", "HTTP/1.1", status, title);
 }
 //添加响应头部
 bool http_conn::add_headers(int content_len){
+    // printf("添加响应头部!\n");
     add_content_length(content_len);
     add_content_type();
     add_linger();
     add_blank_line();
+    // printf("添加响应头部完成!\n");
 }
 //添加响应正文
 bool http_conn::add_content(const char* content){
+    // printf("添加响应正文!\n");
     return add_response("%s", content);
 }
 // 往写缓冲中写入待发送的数据
@@ -524,6 +558,7 @@ bool http_conn::add_content_length(int  content_len){
 bool http_conn::add_content_type(){
     return add_response("Content-Type:%s\r\n", "text/html");
     // return add_response("Content-Type:%s\r\n", "image/jpeg");
+    // return add_response("Content-Type:%s\r\n", "image/png");
 }
 bool http_conn::add_linger(){
     return add_response("Connection:%s\r\n", (m_linger == true) ? "keep-alive":"close");
