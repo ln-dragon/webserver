@@ -219,6 +219,7 @@ http_conn::HTTP_CODE http_conn::process_read(){
                     return BAD_REQUEST;
                 }
                 else if(ret == GET_REQUEST){
+                    //发现是GET请求可以在请求行和头部字段解析完成后立即执行，因为无需等待消息体的解析。
                     return do_request();
                 }
                 break;
@@ -226,6 +227,7 @@ http_conn::HTTP_CODE http_conn::process_read(){
             case CHECK_STATE_CONTENT:{
                 ret = parse_content(text);
                 if(ret == GET_REQUEST){
+                    //POST请求，在解析完消息体后内存映射
                     return do_request();
                 }
                 line_status = LINE_OPEN;
@@ -471,41 +473,43 @@ bool http_conn::process_write(HTTP_CODE ret){
             add_headers(m_file_stat.st_size);
             // printf("开始分散写入缓冲区!\n");
             //无缓存机制的代码
-            m_iv[0].iov_base = m_write_buf;
-            m_iv[0].iov_len = m_write_idx;
-            m_iv[1].iov_base = m_file_address;
-            m_iv[1].iov_len = m_file_stat.st_size;
-            m_iv_count = 2;
+            // m_iv[0].iov_base = m_write_buf;
+            // m_iv[0].iov_len = m_write_idx;
+            // m_iv[1].iov_base = m_file_address;
+            // m_iv[1].iov_len = m_file_stat.st_size;
+            // m_iv_count = 2;
 
-            bytes_to_send = m_write_idx + m_file_stat.st_size;
+            // bytes_to_send = m_write_idx + m_file_stat.st_size;
 
             //有缓存机制的代码
-            // // 定义一个 std::string 变量来接收缓存内容
-            // std::string cached_value;
+            m_iv[0].iov_base = m_write_buf;
+            m_iv[0].iov_len = m_write_idx;
+            // 定义一个 std::string 变量来接收缓存内容
+            std::string cached_value;
 
-            // if (LFUCache::GetInstance().get(m_url_str, cached_value)) {
-            //     // 缓存命中，将 cached_value 内容复制到 iovec 结构体
-            //     // printf("缓存命中!\n");
-            //     m_iv[1].iov_base = (void*)cached_value.data();
-            //     m_iv[1].iov_len = cached_value.size();
-            //     m_iv_count = 2;
+            if (LFUCache::GetInstance().get(m_url_str, cached_value)) {
+                // 缓存命中，将 cached_value 内容复制到 iovec 结构体
+                // printf("缓存命中!\n");
+                m_iv[1].iov_base = (void*)cached_value.data();
+                m_iv[1].iov_len = cached_value.size();
+                m_iv_count = 2;
 
-            //     bytes_to_send = m_write_idx + cached_value.size();
-            // } else {
-            //     // printf("缓存未命中!\n");
-            //     // 缓存未命中，继续从文件系统读取
-            //     m_iv[1].iov_base = m_file_address;
-            //     m_iv[1].iov_len = m_file_stat.st_size;
-            //     m_iv_count = 2;
+                bytes_to_send = m_write_idx + cached_value.size();
+            } else {
+                // printf("缓存未命中!\n");
+                // 缓存未命中，继续从文件系统读取
+                m_iv[1].iov_base = m_file_address;
+                m_iv[1].iov_len = m_file_stat.st_size;
+                m_iv_count = 2;
 
-            //     bytes_to_send = m_write_idx + m_file_stat.st_size;
+                bytes_to_send = m_write_idx + m_file_stat.st_size;
 
-            //     // 将文件内容加入缓存,m_file_address 位置开始读取 m_file_stat.st_size 字节的内容
-            //     std::string context(m_file_address, m_file_stat.st_size);
-            //     std::string m_url_str(m_url);  // 将 m_url 转化为 std::string 类型
-            //     LFUCache::GetInstance().set(m_url_str, context);
-            //     // printf("缓存加入成功!\n");
-            // }
+                // 将文件内容加入缓存,m_file_address 位置开始读取 m_file_stat.st_size 字节的内容
+                std::string context(m_file_address, m_file_stat.st_size);
+                std::string m_url_str(m_url);  // 将 m_url 转化为 std::string 类型
+                LFUCache::GetInstance().set(m_url_str, context);
+                // printf("缓存加入成功!\n");
+            }
             return true;
         }
         default:
@@ -517,6 +521,7 @@ bool http_conn::process_write(HTTP_CODE ret){
     bytes_to_send = m_write_idx;
     return true;
 }
+
 //添加状态行
 bool http_conn::add_status_line(int status, const char* title){
     printf("添加状态行!\n");

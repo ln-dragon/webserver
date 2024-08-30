@@ -39,7 +39,7 @@ private:
 
     size_t padPointer(char* p, size_t align);   // 计算对齐所需空间
     Slot* allocateBlock();      // 申请内存块放进内存池
-    Slot* nofree_solve();
+    Slot* nofree_solve();       //从内存池中获取一个内存槽的地址分配给用户
 };
 
 void init_MemoryPool();
@@ -53,10 +53,11 @@ template<typename T, typename... Args>
 T* newElement(Args&&... args) {
     T* p;
     if((p = reinterpret_cast<T *>(use_Memory(sizeof(T)))) != nullptr)
-        // new(p) T1(value);
-        // placement new:在指针p所指向的内存空间创建一个T1类型的对象，类似与 realloc
         // 把已有的空间当成一个缓冲区来使用，减少了分配空间所耗费的时间
         // 因为直接用new操作符分配内存的话，在堆中查找足够大的剩余空间速度是比较慢的
+
+        // new(p) T1(value);
+        // placement new:在指针p所指向的内存空间创建一个T1类型的对象，类似与 realloc
         new(p) T(std::forward<Args>(args)...); // 完美转发
 
     return p;

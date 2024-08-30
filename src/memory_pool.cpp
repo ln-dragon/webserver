@@ -40,9 +40,9 @@ inline size_t MemoryPool::padPointer(char* p, size_t align) {
 
 // template <typename T, size_t BlockSize>
 Slot* MemoryPool::allocateBlock() {
-    char* newBlock = reinterpret_cast<char *>(operator new(BlockSize));
+    char* newBlock = reinterpret_cast<char *>(operator new(BlockSize));//从操作系统中分配一块内存
 
-    char* body = newBlock + sizeof(Slot*);
+    char* body = newBlock + sizeof(Slot*);//实际存储数据的起始位置
     // 计算为了对齐需要空出多少位置
     // size_t bodyPadding = padPointer(body, sizeof(slotSize_));
     size_t bodyPadding = padPointer(body, static_cast<size_t>(slotSize_));
@@ -55,11 +55,12 @@ Slot* MemoryPool::allocateBlock() {
         reinterpret_cast<Slot *>(newBlock)->next = currentBolck_;
         currentBolck_ = reinterpret_cast<Slot *>(newBlock);
         // 为该Block开始的地方加上bodyPadding个char* 空间
-        currentSlot_ = reinterpret_cast<Slot *>(body + bodyPadding);
+        currentSlot_ = reinterpret_cast<Slot *>(body + bodyPadding);//当前内存槽指针
+        //指向当前内存块中的最后一个内存槽
         lastSlot_ = reinterpret_cast<Slot *>(newBlock + BlockSize - slotSize_ + 1);
         useSlot = currentSlot_;
 
-        // slot指针一次移动8个字节
+        // slot指针一次移动8个字节，移向下一个内存槽
         currentSlot_ += (slotSize_ >> 3);
         // currentSlot_ += slotSize_;
         mutex_other_.unlock(); // 手动解锁
@@ -69,6 +70,7 @@ Slot* MemoryPool::allocateBlock() {
 }
 
 // template <typename T, size_t BlockSize>
+//从内存池中获取一个内存槽的地址分配给用户
 Slot* MemoryPool::nofree_solve() {
     if(currentSlot_ >= lastSlot_)
         return allocateBlock();
@@ -83,7 +85,7 @@ Slot* MemoryPool::nofree_solve() {
     return useSlot;
 }
 
-
+//从freeslot链表中获取一个内存槽的地址
 Slot* MemoryPool::allocate() {
     if(freeSlot_) {
         {
@@ -96,10 +98,11 @@ Slot* MemoryPool::allocate() {
             mutex_freeSlot_.unlock(); // 手动解锁
         }
     }
-
+    //不能在链表中找到一个内存槽，则在内存池中申请一个新的内存槽
     return nofree_solve();
 }
 
+//已释放的内存槽添加到freeSlot_ 链表中
 // template <typename T, size_t BlockSize>
 inline void MemoryPool::deAllocate(Slot* p) {
     if(p) {
@@ -111,25 +114,26 @@ inline void MemoryPool::deAllocate(Slot* p) {
     }
 }
 
+//返回一个内存池对象
 // template <typename T, size_t BlockSize>
 MemoryPool& get_MemoryPool(int id) {
     static MemoryPool memorypool_[64];
-    return memorypool_[id];
+    return memorypool_[id];//返回一个64个数组中的某一个内存池对象
 }
 
-// 数组中分别存放Slot大小为8，16，...，512字节的BLock链表
+// 初始化不同内存池对象中分别存放Slot大小为8，16，...，512字节的BLock链表
 void init_MemoryPool() {
     for(int i = 0; i < 64; ++i) {
         get_MemoryPool(i).init((i + 1) << 3);
     }
 }
 
-// 超过512字节就直接new
+// 超过512字节就直接new，没超过就从内存池中申请
 void* use_Memory(size_t size) {
     if(!size)
         return nullptr;
     if(size > 512)
-        return operator new(size);
+        return operator new(size);//从操作系统中申请内存
     
     // 相当于(size / 8)向上取整
     return reinterpret_cast<void *>(get_MemoryPool(((size + 7) >> 3) - 1).allocate());
@@ -138,7 +142,7 @@ void* use_Memory(size_t size) {
 void free_Memory(size_t size, void* p) {
     if(!p)  return;
     if(size > 512) {
-        operator delete (p);
+        operator delete (p);//大于512字节就从操作系统中释放内存
         return;
     }
     get_MemoryPool(((size + 7) >> 3) - 1).deAllocate(reinterpret_cast<Slot *>(p));

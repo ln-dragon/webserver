@@ -37,10 +37,10 @@ int main(int argc, char *argv[]){
     }
     // printf("初始化内存池\n");
 
-    // // 初始化内存池
-    // init_MemoryPool();
-    // // 初始化缓存
-    // LFUCache::GetInstance().Initialize(10);
+    // 初始化内存池
+    init_MemoryPool();
+    // 初始化缓存
+    LFUCache::GetInstance().Initialize(10);
 
     //获取端口号
     char* ip = argv[1];
@@ -53,10 +53,17 @@ int main(int argc, char *argv[]){
         pool = new threadpool<http_conn>;
     }
     catch(...){
-        return -1;
+        return -1;//防止由于内存分配失败或者其他异常导致程序崩溃
     }
     //为客户分配一个http_conn对象
-    http_conn* users = new http_conn[MAX_FD];
+    //使用new关键字分配对象
+    // http_conn* users = new http_conn[MAX_FD];
+
+    //使用内存池分配对象
+    http_conn** users = new http_conn*[MAX_FD];//users是指向http_conn指针对象的指针数组首元素
+    for (size_t i = 0; i < MAX_FD; ++i) {
+        users[i] = newElement<http_conn>();  // 指针数组中每一个元素都是http_conn对象的指针
+    }
 
     //网络连接代码
     int listenfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -103,30 +110,39 @@ int main(int argc, char *argv[]){
                     continue;
                 }
                 //初始化连接客户
-                users[connfd].init(connfd, clientaddr);
+                //users[connfd].init(connfd, clientaddr);
+                users[connfd]->init(connfd, clientaddr);
             }
             else if(events[i].events & (EPOLLRDHUP |EPOLLHUP | EPOLLERR)){
-                users[sockfd].close_conn();
+                // users[sockfd].close_conn();
+                users[sockfd]->close_conn();
             }
             else if(events[i].events & EPOLLIN){
-                if(users[sockfd].read()){
+                if(users[sockfd]->read()){
                     //一次性把数据都读完
-                    pool->append(users + sockfd);
+                    pool->append(users[sockfd]);
                 }
                 else{
-                    users[sockfd].close_conn();
+                    users[sockfd]->close_conn();
                 }
             }
             else if(events[i].events & EPOLLOUT){
-                if( !users[sockfd].write()){//一次性把数据写完
-                    users[sockfd].close_conn();
+                if( !users[sockfd]->write()){//一次性把数据写完
+                    users[sockfd]->close_conn(); 
                 }
             }
         } 
     }
     close(epollfd);
     close(listenfd);
-    delete [] users;
+    // delete [] users;
+    for (size_t i = 0; i < MAX_FD; ++i) {
+        if (users[i] != nullptr) {
+                users[i]->~http_conn();  // 手动调用析构函数
+                deleteElement(users[i]);   // 释放内存池中的内存
+        }
+    }
+    delete[] users;  // 释放指针数组本身的内存
     delete pool;
     return 0;
 }
