@@ -12,7 +12,7 @@ const char* error_500_title = "Internal Error";
 const char* error_500_form = "There was an unusual problem serving the requested file.\n";
 
 // 网站的根目录
-const char* doc_root = "/home/dragon/mywebserver/resources";
+const char* doc_root = "/home/dragon/webserver/resources";
 int http_conn::m_epollfd = -1;
 int http_conn::m_user_count = 0;
 
@@ -389,8 +389,15 @@ http_conn::HTTP_CODE http_conn::do_request(){
     //以只读方式打开文件
     int fd = open(m_real_file, O_RDONLY);
     // 创建内存映射
-    m_file_address = (char*)mmap(0,m_file_stat.st_mode, PROT_READ, MAP_PRIVATE, fd, 0);
+    m_file_address = (char*)mmap(0, m_file_stat.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
     close(fd);
+
+    if (m_file_address == MAP_FAILED) {
+        perror("mmap failed");
+        m_file_address = nullptr;
+        return NO_RESOURCE;
+    }
+    
     printf("创建内存映射成功!\n");
     return FILE_REQUEST;
 }

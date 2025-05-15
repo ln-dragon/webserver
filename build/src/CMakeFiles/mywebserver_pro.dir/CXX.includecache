@@ -82,9 +82,9 @@ list
 lock.h
 ../include/lock.h
 
-/home/dragon/mywebserver/src/LFUCache.cpp
+/home/dragon/webserver/src/LFUCache.cpp
 LFUCache.h
-/home/dragon/mywebserver/src/LFUCache.h
+/home/dragon/webserver/src/LFUCache.h
 iostream
 -
 vector
@@ -94,11 +94,11 @@ random
 assert.h
 -
 
-/home/dragon/mywebserver/src/http_conn.cpp
+/home/dragon/webserver/src/http_conn.cpp
 http_conn.h
-/home/dragon/mywebserver/src/http_conn.h
+/home/dragon/webserver/src/http_conn.h
 
-/home/dragon/mywebserver/src/main.cpp
+/home/dragon/webserver/src/main.cpp
 unistd.h
 -
 stdio.h
@@ -118,17 +118,17 @@ arpa/inet.h
 sys/epoll.h
 -
 threadpool.h
-/home/dragon/mywebserver/src/threadpool.h
+/home/dragon/webserver/src/threadpool.h
 http_conn.h
-/home/dragon/mywebserver/src/http_conn.h
+/home/dragon/webserver/src/http_conn.h
 cassert
 -
 errno.h
 -
 
-/home/dragon/mywebserver/src/memory_pool.cpp
+/home/dragon/webserver/src/memory_pool.cpp
 memory_pool.h
-/home/dragon/mywebserver/src/memory_pool.h
+/home/dragon/webserver/src/memory_pool.h
 assert.h
 -
 

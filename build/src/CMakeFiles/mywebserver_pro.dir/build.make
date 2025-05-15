@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dragon/mywebserver
+CMAKE_SOURCE_DIR = /home/dragon/webserver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dragon/mywebserver/build
+CMAKE_BINARY_DIR = /home/dragon/webserver/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/mywebserver_pro.dir/depend.make
@@ -59,16 +59,16 @@ include src/CMakeFiles/mywebserver_pro.dir/flags.make
 
 src/CMakeFiles/mywebserver_pro.dir/main.cpp.o: src/CMakeFiles/mywebserver_pro.dir/flags.make
 src/CMakeFiles/mywebserver_pro.dir/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/mywebserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/main.cpp.o"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/main.cpp.o -c /home/dragon/mywebserver/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/webserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/main.cpp.o"
+	cd /home/dragon/webserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/main.cpp.o -c /home/dragon/webserver/src/main.cpp
 
 src/CMakeFiles/mywebserver_pro.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mywebserver_pro.dir/main.cpp.i"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/mywebserver/src/main.cpp > CMakeFiles/mywebserver_pro.dir/main.cpp.i
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/webserver/src/main.cpp > CMakeFiles/mywebserver_pro.dir/main.cpp.i
 
 src/CMakeFiles/mywebserver_pro.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mywebserver_pro.dir/main.cpp.s"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/mywebserver/src/main.cpp -o CMakeFiles/mywebserver_pro.dir/main.cpp.s
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/webserver/src/main.cpp -o CMakeFiles/mywebserver_pro.dir/main.cpp.s
 
 src/CMakeFiles/mywebserver_pro.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ src/CMakeFiles/mywebserver_pro.dir/main.cpp.o.provides.build: src/CMakeFiles/myw
 
 src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o: src/CMakeFiles/mywebserver_pro.dir/flags.make
 src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o: ../src/http_conn.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/mywebserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o -c /home/dragon/mywebserver/src/http_conn.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/webserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o"
+	cd /home/dragon/webserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o -c /home/dragon/webserver/src/http_conn.cpp
 
 src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mywebserver_pro.dir/http_conn.cpp.i"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/mywebserver/src/http_conn.cpp > CMakeFiles/mywebserver_pro.dir/http_conn.cpp.i
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/webserver/src/http_conn.cpp > CMakeFiles/mywebserver_pro.dir/http_conn.cpp.i
 
 src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mywebserver_pro.dir/http_conn.cpp.s"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/mywebserver/src/http_conn.cpp -o CMakeFiles/mywebserver_pro.dir/http_conn.cpp.s
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/webserver/src/http_conn.cpp -o CMakeFiles/mywebserver_pro.dir/http_conn.cpp.s
 
 src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o.requires:
 
@@ -107,16 +107,16 @@ src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o: src/CMakeFiles/mywebserver_pro.dir/flags.make
 src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o: ../src/memory_pool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/mywebserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o -c /home/dragon/mywebserver/src/memory_pool.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/webserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o"
+	cd /home/dragon/webserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o -c /home/dragon/webserver/src/memory_pool.cpp
 
 src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.i"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/mywebserver/src/memory_pool.cpp > CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.i
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/webserver/src/memory_pool.cpp > CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.i
 
 src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.s"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/mywebserver/src/memory_pool.cpp -o CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.s
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/webserver/src/memory_pool.cpp -o CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.s
 
 src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o.requires:
 
@@ -131,16 +131,16 @@ src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o.provides.build: src/CMakeFi
 
 src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o: src/CMakeFiles/mywebserver_pro.dir/flags.make
 src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o: ../src/LFUCache.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/mywebserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o -c /home/dragon/mywebserver/src/LFUCache.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dragon/webserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o"
+	cd /home/dragon/webserver/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o -c /home/dragon/webserver/src/LFUCache.cpp
 
 src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.i"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/mywebserver/src/LFUCache.cpp > CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.i
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dragon/webserver/src/LFUCache.cpp > CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.i
 
 src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.s"
-	cd /home/dragon/mywebserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/mywebserver/src/LFUCache.cpp -o CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.s
+	cd /home/dragon/webserver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dragon/webserver/src/LFUCache.cpp -o CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.s
 
 src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o.requires:
 
@@ -169,8 +169,8 @@ mywebserver_pro_EXTERNAL_OBJECTS =
 ../bin/mywebserver_pro: src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o
 ../bin/mywebserver_pro: src/CMakeFiles/mywebserver_pro.dir/build.make
 ../bin/mywebserver_pro: src/CMakeFiles/mywebserver_pro.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dragon/mywebserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../../bin/mywebserver_pro"
-	cd /home/dragon/mywebserver/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mywebserver_pro.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dragon/webserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../../bin/mywebserver_pro"
+	cd /home/dragon/webserver/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mywebserver_pro.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/mywebserver_pro.dir/build: ../bin/mywebserver_pro
@@ -185,10 +185,10 @@ src/CMakeFiles/mywebserver_pro.dir/requires: src/CMakeFiles/mywebserver_pro.dir/
 .PHONY : src/CMakeFiles/mywebserver_pro.dir/requires
 
 src/CMakeFiles/mywebserver_pro.dir/clean:
-	cd /home/dragon/mywebserver/build/src && $(CMAKE_COMMAND) -P CMakeFiles/mywebserver_pro.dir/cmake_clean.cmake
+	cd /home/dragon/webserver/build/src && $(CMAKE_COMMAND) -P CMakeFiles/mywebserver_pro.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/mywebserver_pro.dir/clean
 
 src/CMakeFiles/mywebserver_pro.dir/depend:
-	cd /home/dragon/mywebserver/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dragon/mywebserver /home/dragon/mywebserver/src /home/dragon/mywebserver/build /home/dragon/mywebserver/build/src /home/dragon/mywebserver/build/src/CMakeFiles/mywebserver_pro.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dragon/webserver/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dragon/webserver /home/dragon/webserver/src /home/dragon/webserver/build /home/dragon/webserver/build/src /home/dragon/webserver/build/src/CMakeFiles/mywebserver_pro.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/mywebserver_pro.dir/depend
 

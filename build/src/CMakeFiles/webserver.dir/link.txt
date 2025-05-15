@@ -1,0 +1,1 @@
+/usr/bin/c++  -g  -rdynamic CMakeFiles/webserver.dir/main.cpp.o CMakeFiles/webserver.dir/http_conn.cpp.o CMakeFiles/webserver.dir/memory_pool.cpp.o CMakeFiles/webserver.dir/LFUCache.cpp.o  -o ../../bin/webserver -lpthread 

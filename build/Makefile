@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dragon/mywebserver
+CMAKE_SOURCE_DIR = /home/dragon/webserver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dragon/mywebserver/build
+CMAKE_BINARY_DIR = /home/dragon/webserver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/snap/cmake/1399/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/mywebserver/build/CMakeFiles /home/dragon/mywebserver/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/webserver/build/CMakeFiles /home/dragon/webserver/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/mywebserver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/webserver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mywebserver_pro
+# Target rules for targets named webserver
 
 # Build rule for target.
-mywebserver_pro: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mywebserver_pro
-.PHONY : mywebserver_pro
+webserver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 webserver
+.PHONY : webserver
 
 # fast build rule for target.
-mywebserver_pro/fast:
-	$(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/build
-.PHONY : mywebserver_pro/fast
+webserver/fast:
+	$(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/build
+.PHONY : webserver/fast
 
 # Help Target
 help:
@@ -131,7 +131,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... mywebserver_pro"
+	@echo "... webserver"
 .PHONY : help
 
 

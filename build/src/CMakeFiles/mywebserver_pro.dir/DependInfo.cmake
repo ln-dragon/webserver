@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dragon/mywebserver/src/LFUCache.cpp" "/home/dragon/mywebserver/build/src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o"
-  "/home/dragon/mywebserver/src/http_conn.cpp" "/home/dragon/mywebserver/build/src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o"
-  "/home/dragon/mywebserver/src/main.cpp" "/home/dragon/mywebserver/build/src/CMakeFiles/mywebserver_pro.dir/main.cpp.o"
-  "/home/dragon/mywebserver/src/memory_pool.cpp" "/home/dragon/mywebserver/build/src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o"
+  "/home/dragon/webserver/src/LFUCache.cpp" "/home/dragon/webserver/build/src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o"
+  "/home/dragon/webserver/src/http_conn.cpp" "/home/dragon/webserver/build/src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o"
+  "/home/dragon/webserver/src/main.cpp" "/home/dragon/webserver/build/src/CMakeFiles/mywebserver_pro.dir/main.cpp.o"
+  "/home/dragon/webserver/src/memory_pool.cpp" "/home/dragon/webserver/build/src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

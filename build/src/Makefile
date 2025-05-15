@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dragon/mywebserver
+CMAKE_SOURCE_DIR = /home/dragon/webserver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dragon/mywebserver/build
+CMAKE_BINARY_DIR = /home/dragon/webserver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/snap/cmake/1399/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/dragon/mywebserver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/mywebserver/build/CMakeFiles /home/dragon/mywebserver/build/src/CMakeFiles/progress.marks
-	cd /home/dragon/mywebserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/mywebserver/build/CMakeFiles 0
+	cd /home/dragon/webserver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/webserver/build/CMakeFiles /home/dragon/webserver/build/src/CMakeFiles/progress.marks
+	cd /home/dragon/webserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/webserver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/dragon/webserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,33 +97,33 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/dragon/mywebserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/dragon/webserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/dragon/webserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/dragon/mywebserver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/dragon/webserver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/mywebserver_pro.dir/rule:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/mywebserver_pro.dir/rule
-.PHONY : src/CMakeFiles/mywebserver_pro.dir/rule
+src/CMakeFiles/webserver.dir/rule:
+	cd /home/dragon/webserver/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/webserver.dir/rule
+.PHONY : src/CMakeFiles/webserver.dir/rule
 
 # Convenience name for target.
-mywebserver_pro: src/CMakeFiles/mywebserver_pro.dir/rule
+webserver: src/CMakeFiles/webserver.dir/rule
 
-.PHONY : mywebserver_pro
+.PHONY : webserver
 
 # fast build rule for target.
-mywebserver_pro/fast:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/build
-.PHONY : mywebserver_pro/fast
+webserver/fast:
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/build
+.PHONY : webserver/fast
 
 LFUCache.o: LFUCache.cpp.o
 
@@ -131,7 +131,7 @@ LFUCache.o: LFUCache.cpp.o
 
 # target to build an object file
 LFUCache.cpp.o:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.o
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/LFUCache.cpp.o
 .PHONY : LFUCache.cpp.o
 
 LFUCache.i: LFUCache.cpp.i
@@ -140,7 +140,7 @@ LFUCache.i: LFUCache.cpp.i
 
 # target to preprocess a source file
 LFUCache.cpp.i:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.i
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/LFUCache.cpp.i
 .PHONY : LFUCache.cpp.i
 
 LFUCache.s: LFUCache.cpp.s
@@ -149,7 +149,7 @@ LFUCache.s: LFUCache.cpp.s
 
 # target to generate assembly for a file
 LFUCache.cpp.s:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/LFUCache.cpp.s
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/LFUCache.cpp.s
 .PHONY : LFUCache.cpp.s
 
 http_conn.o: http_conn.cpp.o
@@ -158,7 +158,7 @@ http_conn.o: http_conn.cpp.o
 
 # target to build an object file
 http_conn.cpp.o:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.o
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/http_conn.cpp.o
 .PHONY : http_conn.cpp.o
 
 http_conn.i: http_conn.cpp.i
@@ -167,7 +167,7 @@ http_conn.i: http_conn.cpp.i
 
 # target to preprocess a source file
 http_conn.cpp.i:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.i
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/http_conn.cpp.i
 .PHONY : http_conn.cpp.i
 
 http_conn.s: http_conn.cpp.s
@@ -176,7 +176,7 @@ http_conn.s: http_conn.cpp.s
 
 # target to generate assembly for a file
 http_conn.cpp.s:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/http_conn.cpp.s
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/http_conn.cpp.s
 .PHONY : http_conn.cpp.s
 
 main.o: main.cpp.o
@@ -185,7 +185,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/main.cpp.o
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -194,7 +194,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/main.cpp.i
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -203,7 +203,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/main.cpp.s
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 memory_pool.o: memory_pool.cpp.o
@@ -212,7 +212,7 @@ memory_pool.o: memory_pool.cpp.o
 
 # target to build an object file
 memory_pool.cpp.o:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.o
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/memory_pool.cpp.o
 .PHONY : memory_pool.cpp.o
 
 memory_pool.i: memory_pool.cpp.i
@@ -221,7 +221,7 @@ memory_pool.i: memory_pool.cpp.i
 
 # target to preprocess a source file
 memory_pool.cpp.i:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.i
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/memory_pool.cpp.i
 .PHONY : memory_pool.cpp.i
 
 memory_pool.s: memory_pool.cpp.s
@@ -230,7 +230,7 @@ memory_pool.s: memory_pool.cpp.s
 
 # target to generate assembly for a file
 memory_pool.cpp.s:
-	cd /home/dragon/mywebserver/build && $(MAKE) -f src/CMakeFiles/mywebserver_pro.dir/build.make src/CMakeFiles/mywebserver_pro.dir/memory_pool.cpp.s
+	cd /home/dragon/webserver/build && $(MAKE) -f src/CMakeFiles/webserver.dir/build.make src/CMakeFiles/webserver.dir/memory_pool.cpp.s
 .PHONY : memory_pool.cpp.s
 
 # Help Target
@@ -240,7 +240,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... mywebserver_pro"
+	@echo "... webserver"
 	@echo "... edit_cache"
 	@echo "... LFUCache.o"
 	@echo "... LFUCache.i"
@@ -265,6 +265,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/dragon/mywebserver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/dragon/webserver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

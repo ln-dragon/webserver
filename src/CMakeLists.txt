@@ -6,5 +6,5 @@ set(SRC_LIST
     # ${PROJECT_SOURCE_DIR}/src/nonactive_conn.cpp
 )
 
-add_executable(mywebserver_pro ${SRC_LIST})
-target_link_libraries(mywebserver_pro pthread)
+add_executable(webserver ${SRC_LIST})
+target_link_libraries(webserver pthread)

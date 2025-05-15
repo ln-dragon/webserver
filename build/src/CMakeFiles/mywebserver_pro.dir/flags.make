@@ -6,5 +6,5 @@ CXX_FLAGS = -g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dragon/mywebserver/include 
+CXX_INCLUDES = -I/home/dragon/webserver/include 
 
